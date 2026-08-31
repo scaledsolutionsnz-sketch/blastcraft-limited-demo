@@ -1,11 +1,11 @@
 /* ============================================================
    Blastcraft Limited — Timaru
-   Archetype: Premium  |  Type: Sora + Hanken Grotesk
+   Archetype: Industrial livery  |  Type: Sora + Hanken Grotesk
    ============================================================ */
 
 :root{
-  --ink:#0A121B;
-  --ink-2:#101C29;
+  --ink:#10150F;
+  --ink-2:#171E17;
   --ink-3:#17263608;
   --bone:#F3F0EA;
   --paper:#FFFFFF;
@@ -13,15 +13,17 @@
   --line-dark:#FFFFFF1F;
   --body:#3E4750;
   --body-dark:#B3BDC7;
-  --head:#0A121B;
-  --accent:#C9803D;
-  --accent-lt:#E0A268;
-  --accent-dk:#A2601F;
-  --r:14px;
-  --r-lg:20px;
+  --head:#10150F;
+  --accent:#05402A;
+  --accent-lt:#5FBE8C;
+  --accent-dk:#032A1B;
+  --gold:#F5C400;
+  --gold-dk:#B88F00;
+  --r:6px;
+  --r-lg:10px;
   --wrap:1180px;
-  --shadow:0 18px 44px -26px rgba(10,18,27,.42);
-  --shadow-lg:0 34px 70px -34px rgba(10,18,27,.55);
+  --shadow:0 18px 44px -26px rgba(16,21,15,.42);
+  --shadow-lg:0 34px 70px -34px rgba(16,21,15,.55);
   --ease:cubic-bezier(.22,.61,.36,1);
 }
 
@@ -163,7 +165,7 @@ a{color:inherit;text-decoration:none}
   transition:background .4s var(--ease),box-shadow .4s var(--ease),backdrop-filter .4s;
 }
 .nav.is-stuck{
-  background:rgba(10,18,27,.93);
+  background:rgba(16,21,15,.93);
   backdrop-filter:blur(14px);
   -webkit-backdrop-filter:blur(14px);
   box-shadow:0 1px 0 #ffffff17;
@@ -219,7 +221,7 @@ a{color:inherit;text-decoration:none}
 .nav.is-open .nav__toggle .ic--menu{display:none}
 .nav.is-open .nav__toggle .ic--close{display:block}
 
-.nav.is-open{background:rgba(10,18,27,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav.is-open{background:rgba(16,21,15,.98);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .nav.is-open .nav__links{
   display:flex;
   flex-direction:column;
@@ -268,8 +270,8 @@ a{color:inherit;text-decoration:none}
 .hero__scrim{
   position:absolute;inset:0;z-index:-1;
   background:
-    linear-gradient(180deg,rgba(10,18,27,.72) 0%,rgba(10,18,27,.44) 34%,rgba(10,18,27,.88) 100%),
-    linear-gradient(95deg,rgba(10,18,27,.7) 0%,rgba(10,18,27,.24) 72%);
+    linear-gradient(180deg,rgba(16,21,15,.72) 0%,rgba(16,21,15,.44) 34%,rgba(16,21,15,.88) 100%),
+    linear-gradient(95deg,rgba(16,21,15,.7) 0%,rgba(16,21,15,.24) 72%);
 }
 .hero__inner{position:relative}
 .hero__title{color:#fff;max-width:16ch;margin-bottom:.55em}
@@ -369,7 +371,7 @@ a{color:inherit;text-decoration:none}
   overflow:hidden;
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
 }
-.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:#C9803D66}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:#05402A66}
 .card__media{aspect-ratio:16/9;overflow:hidden;background:var(--ink-2)}
 .card__media img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .card:hover .card__media img{transform:scale(1.05)}
@@ -552,7 +554,7 @@ a{color:inherit;text-decoration:none}
 .map iframe{display:block;width:100%;height:340px;border:0;filter:grayscale(.28) contrast(1.04)}
 
 /* ---------- Footer ---------- */
-.foot{background:#060C13;color:var(--body-dark);padding:52px 0 0}
+.foot{background:#080B07;color:var(--body-dark);padding:52px 0 0}
 .foot__inner{display:grid;gap:34px}
 .foot__brand p{font-size:.94rem;max-width:44ch;margin:1.1rem 0 1.3rem}
 .brand--foot{margin-right:0}
