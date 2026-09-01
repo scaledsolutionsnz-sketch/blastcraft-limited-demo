@@ -1,22 +1,12 @@
-/* Blastcraft Limited — Timaru
+/* Blastcraft Limited - Timaru
    Site script: intro, hero rotation, nav, reveal, gmail compose links */
 (function () {
   'use strict';
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Opening animation ---------- */
-  var intro = document.getElementById('intro');
-  function closeIntro() {
-    if (!intro || intro.classList.contains('is-done')) return;
-    intro.classList.add('is-done');
-    document.body.classList.add('is-ready');
-    revealNow();
-  }
-  if (intro) {
-    window.setTimeout(closeIntro, reduced ? 120 : 1450);
-    window.addEventListener('load', function () { window.setTimeout(closeIntro, reduced ? 0 : 1150); });
-  }
+  /* ---------- Hero reveal on load ---------- */
+  window.addEventListener('DOMContentLoaded', function () { revealNow(); });
 
   /* ---------- Gmail compose links (address built in JS, never in HTML) ---------- */
   Array.prototype.forEach.call(document.querySelectorAll('a[data-gmail]'), function (a) {
@@ -33,21 +23,11 @@
   var navToggle = document.getElementById('navToggle');
   var navLinks = document.getElementById('navLinks');
 
-  function onScroll() {
-    if (!nav) return;
-    if (window.scrollY > 24) nav.classList.add('is-stuck');
-    else if (!nav.classList.contains('is-open')) nav.classList.remove('is-stuck');
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
   if (navToggle && nav) {
     navToggle.addEventListener('click', function () {
       var open = nav.classList.toggle('is-open');
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-      if (open) nav.classList.add('is-stuck');
-      else onScroll();
     });
   }
   if (navLinks) {
@@ -59,7 +39,6 @@
           navToggle.setAttribute('aria-expanded', 'false');
           navToggle.setAttribute('aria-label', 'Open menu');
         }
-        onScroll();
       });
     });
   }
@@ -94,6 +73,27 @@
     if (document.hidden) stop(); else start();
   });
   start();
+
+  /* ---------- Hero review widget: same example set as the review cards ---------- */
+  var REVIEWS = [
+    { quote: 'Dropped a stock crate and hay feeders off Monday, back on the truck Thursday. Finish is miles better than the coating they came with.', by: 'Dave R., Washdyke' },
+    { quote: 'Rang about a rusted-out balustrade on a coastal build. They quoted it in writing and the price did not move at the end.', by: 'Kelly M., Temuka' },
+    { quote: 'Our frames sit in salt air year round. Two seasons on there is still no rust bleeding through the paint.', by: 'Sione T., Timaru' },
+    { quote: 'Old cast iron bath, blasted back and sprayed the colour I picked. They talked me through what would hold up first.', by: 'Anna B., Geraldine' }
+  ];
+  var revBody = document.getElementById('heroReviewBody');
+  if (revBody && REVIEWS.length > 1 && !reduced) {
+    var rIdx = 0;
+    window.setInterval(function () {
+      revBody.classList.add('is-fading');
+      window.setTimeout(function () {
+        rIdx = (rIdx + 1) % REVIEWS.length;
+        revBody.querySelector('q').textContent = REVIEWS[rIdx].quote;
+        revBody.querySelector('.herorev__by').textContent = REVIEWS[rIdx].by;
+        revBody.classList.remove('is-fading');
+      }, 450);
+    }, 6000);
+  }
 
   /* ---------- Scroll reveal ---------- */
   var items = document.querySelectorAll('.reveal');
